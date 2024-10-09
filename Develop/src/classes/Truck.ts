@@ -6,7 +6,7 @@ import Wheel from './Wheel.js';
 import AbleToTow from '../interfaces/AbleToTow.js';
 
 // TODO: The Truck class should extend the Vehicle class and should implement the AbleToTow interface
-class Truck extends Vehicle{
+class Truck extends Vehicle implements AbleToTow{
   // TODO: Declare properties of the Truck class
   // TODO: The properties should include vin, color, make, model, year, weight, top speed, wheels, and towing capacity
   // TODO: The types should be as follows: vin (string), color (string), make (string), model (string), year (number), weight (number), topSpeed (number), wheels (Wheel[]), towingCapacity (number)
@@ -17,8 +17,8 @@ class Truck extends Vehicle{
   year: number;
   weight: number;
   topSpeed: number;
-  wheels: Wheel[];
   towingCapacity: number;
+  wheels: Wheel[];
   // TODO: Create a constructor that accepts the properties of the Truck class
   constructor(
     vin: string,
@@ -28,8 +28,8 @@ class Truck extends Vehicle{
     year: number,
     weight: number,
     topSpeed: number,
-    wheels: Wheel[],
     towingCapacity: number,
+    wheels: Wheel[],
   ) {
     // TODO: The constructor should call the constructor of the parent class, Vehicle
     super();
@@ -52,9 +52,15 @@ class Truck extends Vehicle{
   // TODO: Implement the tow method from the AbleToTow interface
   tow(vehicle: Truck | Motorbike | Car): void {
     // TODO: Get the make an model of the vehicle if it exists
+    const {make, model, weight} = vehicle;
     // TODO: Check if the vehicle's weight is less than or equal to the truck's towing capacity
-    // TODO: If it is, log that the vehicle is being towed
-    // TODO: If it is not, log that the vehicle is too heavy to be towed
+    if (weight <= this.towingCapacity) {
+      // TODO: If it is, log that the vehicle is being towed
+      console.log(`${make} ${model} is being towed.`)
+    } else {
+      // TODO: If it is not, log that the vehicle is too heavy to be towed
+      console.log(`${make} ${model} is too heavy to be towed.`)
+    }    
   }
 
   // TODO: Override the printDetails method from the Vehicle class
@@ -71,7 +77,18 @@ class Truck extends Vehicle{
     console.log(`Top speed: ${this.topSpeed} mph`);
     console.log(`Color: ${this.color}`);
     console.log(`Towing capacity: ${this.towingCapacity} lbs`);
-    console.log(`Wheels: ${this.wheels}`);  
+    console.log(
+      `Wheel 1: ${this.wheels[0].getDiameter} inch with a ${this.wheels[0].getTireBrand} tire`
+    );
+    console.log(
+      `Wheel 2: ${this.wheels[1].getDiameter} inch with a ${this.wheels[1].getTireBrand} tire`
+    );
+    console.log(
+      `Wheel 3: ${this.wheels[2].getDiameter} inch with a ${this.wheels[2].getTireBrand} tire`
+    );
+    console.log(
+      `Wheel 4: ${this.wheels[3].getDiameter} inch with a ${this.wheels[3].getTireBrand} tire`
+    );  
   }
 }
 

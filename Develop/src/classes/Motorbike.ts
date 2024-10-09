@@ -45,8 +45,8 @@ class Motorbike extends Vehicle{
   }
   // TODO: Implement the wheelie method
     // TODO: The method should log the message "Motorbike [make] [model] is doing a wheelie!"
-  wheelie():void {
-    console.log(`Motorbike ${this.make} ${this.model} is doing a wheelie!`)
+   static wheelie(motorbike: Motorbike):void {
+    console.log(`Motorbike ${motorbike.make} ${motorbike.model} is doing a wheelie!`)
   }
   // TODO: Override the printDetails method from the Vehicle class
   override printDetails(): void {
@@ -61,7 +61,12 @@ class Motorbike extends Vehicle{
     console.log(`Weight: ${this.weight} lbs`);
     console.log(`Top speed: ${this.topSpeed} mph`);
     console.log(`Color: ${this.color}`);
-    console.log(`Wheels: ${this.wheels}`);  
+    console.log(
+      `Wheel 1: ${this.wheels[0].getDiameter} inch with a ${this.wheels[0].getTireBrand} tire`
+    );
+    console.log(
+      `Wheel 2: ${this.wheels[1].getDiameter} inch with a ${this.wheels[1].getTireBrand} tire`
+    );  
   }
   
 }
